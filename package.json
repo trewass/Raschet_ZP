@@ -1,0 +1,59 @@
+{
+  "name": "raschet-zp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "cross-env NODE_ENV=development ts-node-dev --respawn --transpile-only server/src/index.ts",
+    "dev:client": "cd frontend && vite",
+    "build": "npm run build:shared && npm run build:server && npm run build:client",
+    "build:server": "tsc -p server/tsconfig.json",
+    "build:client": "cd frontend && vite build",
+    "test": "jest",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy",
+    "prisma:push": "prisma db push",
+    "prisma:seed": "prisma db seed",
+    "build:shared": "tsc -p shared/tsconfig.json"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.9.1",
+    "axios": "^1.6.7",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "luxon": "^3.4.4",
+    "multer": "^1.4.5-lts.1",
+    "papaparse": "^5.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1",
+    "zod": "^3.22.4",
+    "dotenv": "^16.3.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.11",
+    "@types/luxon": "^3.3.3",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  }
+}
