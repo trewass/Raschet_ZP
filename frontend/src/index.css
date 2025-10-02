@@ -1,0 +1,168 @@
+:root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  color: #1f2933;
+  background-color: #f5f7fa;
+}
+
+body {
+  margin: 0;
+  background-color: #f5f7fa;
+}
+
+a {
+  color: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+nav {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+nav a {
+  padding: 8px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  background-color: #e4ebf5;
+  color: #1f2933;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav a.active {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  margin-bottom: 24px;
+}
+
+.button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #2563eb;
+  color: #fff;
+  font-weight: 600;
+}
+
+.button.secondary {
+  background-color: #475569;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f1f5f9;
+}
+
+input, select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #cbd5f5;
+  font: inherit;
+}
+
+input[type='number'] {
+  width: 100px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background-color: #e2e8f0;
+  font-size: 12px;
+}
+
+.status-warning {
+  color: #b91c1c;
+  font-size: 12px;
+}
+
+.flex {
+  display: flex;
+  gap: 12px;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.summary-table th,
+.summary-table td {
+  padding: 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.summary-table th {
+  background-color: #f1f5f9;
+  text-align: left;
+}
+
+.printable {
+  background: #fff;
+  padding: 24px;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+  nav, .no-print {
+    display: none !important;
+  }
+  .app-shell {
+    padding: 0;
+    max-width: unset;
+  }
+  .printable {
+    box-shadow: none;
+    margin: 0;
+  }
+}

@@ -1,0 +1,69 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Setting {
+  key   String @id
+  value String
+}
+
+model Manager {
+  id         Int             @id @default(autoincrement())
+  name       String          @unique
+  salePct    Float
+  installPct Float
+  enabled    Boolean         @default(true)
+  aliases    ManagerAlias[]
+}
+
+model ManagerAlias {
+  id        Int     @id @default(autoincrement())
+  alias     String  @unique
+  manager   Manager @relation(fields: [managerId], references: [id])
+  managerId Int
+}
+
+model Salary {
+  id      Int    @id @default(autoincrement())
+  name    String
+  amount  Int
+  enabled Boolean @default(true)
+}
+
+model CrewMember {
+  id          Int              @id @default(autoincrement())
+  name        String           @unique
+  assignments CrewAssignment[]
+}
+
+model Crew {
+  id          Int              @id @default(autoincrement())
+  name        String           @unique
+  assignments CrewAssignment[]
+}
+
+model CrewAssignment {
+  id        Int        @id @default(autoincrement())
+  share     Float
+  crew      Crew       @relation(fields: [crewId], references: [id])
+  crewId    Int
+  member    CrewMember @relation(fields: [memberId], references: [id])
+  memberId  Int
+}
+
+model Deal {
+  id            Int      @id @default(autoincrement())
+  amoId         String?  @unique
+  name          String
+  budget        Int
+  managerName   String?
+  managerId     Int?
+  createdAt     DateTime?
+  closedAt      DateTime?
+  responsibleRaw String?
+}
